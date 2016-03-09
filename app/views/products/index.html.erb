@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-md-3">
+    <h1 class="lead">Nuestros Productos</h1>
+    <div class="list-group">
+        <a href="#" class="list-group-item">Basicos</a>
+        <a href="#" class="list-group-item">Aseo</a>
+        <a href="#" class="list-group-item">Category 3</a>
+    </div>
+  </div>
+  
+  <div class="col-md-9">
+    <div class="row">  
+      <% @products.each do |product| %>
+      <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+          <img src="http://placehold.it/320x150" alt="">
+          <div class="caption">
+            <h4 class="pull-right">$<%= product.price %> COP</h4>
+            <h4><%= link_to product.name, product %></h4>
+            <p><%= product.description%></p>
+            <% link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<!--%= link_to 'New Product', new_product_path %-->
