@@ -1,0 +1,20 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    No hay articulos en su carrito de compras.  por favor <%= link_to "vuelva atras", products_path %> 
+    y agregue algun producto al carrito.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+  <%= link_to "Comprar", purchase_checkout_path, class: "btn btn-primary"%>
+<% end %>

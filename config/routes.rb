@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   
+  get 'purchase/checkout'
+
   resources :products
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
-  root to: "products#index"
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
+  
+  get 'landing/home'
+  get 'landing/about'
+  
+  get 'purchase/checkout'
+  post 'purchases' => 'purchase#confirm'
+  
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  root to: "landing#home" 
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -9,5 +9,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :email) }
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :secname, :email, :password, :address, :date_of_birth) }
   end
+  
+  helper_method :current_order
 
+  def current_order
+    if !session[:order_id].nil?  # debe ir !
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
+  end
+  
 end

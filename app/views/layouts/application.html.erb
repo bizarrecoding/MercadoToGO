@@ -17,20 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <!--%= image_tag "TOGO-02.png", size: "50"%-->
                 <%= link_to "Mercado To Go", root_path, :class => 'navbar-brand' %>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">A cerca de</a>
-                    </li>
-                    <li>
-                        <a href="#">Servicios</a>
-                    </li>
-                    <li>
-                        <a href="#">Contactenos</a>
-                    </li>
+                    <li><%= link_to "Catalogo", products_path %></li>
+                    <li><%= link_to "A cerca de", landing_about_path %></li>
+                    <li><%= link_to "Contactenos", root_path %></li>
                     <% if user_signed_in? %>
                         <li><%= link_to current_user.name, edit_user_registration_path %></li>
                         <li><%= link_to "Salir", destroy_user_session_path, method: :delete %></li>
@@ -38,13 +33,14 @@
                         <li><%= link_to "Registrarse", new_user_registration_path %></li>
                         <li><%= link_to "Iniciar Session", new_user_session_path %></li>
                     <% end %>
+                    <li><%= render 'layouts/cart_text' %></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-    <div class="container">
+    <div class="container">   
       <%= yield %>
     </div>
 </body>

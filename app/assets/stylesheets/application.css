@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.link-unstyled:hover, .link-unstyled:focus {
+    text-decoration: none;
+    text-decoration-style: none;
+}
