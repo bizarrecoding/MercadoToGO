@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160426041625) do
     t.integer  "price",       null: false
     t.integer  "vendorId",    null: false
     t.text     "description"
+    t.string   "category"
+    t.string   "subcategory"
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

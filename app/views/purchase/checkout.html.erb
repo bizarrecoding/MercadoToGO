@@ -39,12 +39,7 @@
   </tbody>
 </table>
 <br>
-<%= form_for @purchase do |f| %>
-    <%= hidden_field :user_id, value: current_user.email %>
-    <%= hidden_field :order_id, value: @order_items.first.order_id %>
-    <%= f.submit "Efectuar pago", class: "btn btn-danger"%>
-    <!--%= button_to "Efectuar pago", purchase_checkout_path, class: "btn btn-danger"%-->
-<% end %>
+<%= link_to "Efectuar pago", purchase_confirm_path, class: "btn btn-danger"%>
 <br><br><br>
 
 <%= link_to "Atras", cart_path%>

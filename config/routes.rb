@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
   
-  get 'purchase/checkout'
-
   resources :products
-  resource :cart, only: [:show]
+  resource :cart, only: [:show, :clear]
   resources :order_items, only: [:create, :update, :destroy]
   
   get 'landing/home'
   get 'landing/about'
   
   get 'purchase/checkout'
-  post 'purchases' => 'purchase#confirm'
+  get 'purchase/confirm'
   
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: "landing#home" 

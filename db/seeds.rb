@@ -7,15 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 product_list = [
-  [ "Tomate", 1, 1000, 0, "Tomates frescos", "Tomate.jpg" ],
-  [ "Cebolla", 2, 800, 0, "Cebolla blanca", nil],
-  [ "Leche Colanta", 3, 2200, 0, "Leche entera de 1 litro ", nil],
-  [ "Huevos x12 ", 4, 8000, 0, "Caja de 12 huevos.", nil]
+  [ "Tomate", 1, 1000, 1, "Tomates frescos", "basicos", "verduras", "Tomate.jpg" ],
+  [ "Cebolla", 2, 800, 1, "Cebolla blanca", "basicos", "verduras", nil],
+  [ "Leche Colanta", 3, 2200, 0, "Leche entera de 1 litro ", "basicos", "productos diarios", nil],
+  [ "Huevos x12 ", 4, 8000, 0, "Caja de 12 huevos.","basicos", "productos diarios", nil]
 ]
 
 Product.delete_all
 
-product_list.each do |name, id, price, vendor, desc, img|
-  Product.create( name: name, pId: id ,price: price, vendorId: vendor, description: desc, image: img)
+product_list.each do |name, id, price, vendor, desc, cat, subcat, img|
+  Product.create( name: name, pId: id ,price: price, vendorId: vendor, description: desc, category: cat, subcategory: subcat, image: img)
 end
 
