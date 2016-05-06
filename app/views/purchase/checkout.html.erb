@@ -9,37 +9,41 @@
 <p>Tarjeta #: xxxx-xxxx-xxxx-xxxx</p>
 
 <br>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Producto</th>
-      <th>Precio</th>
-      <th>Cantidad</th>
-      <th>Accion</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @order_items.each do | item | %>
-      <tr>
-        <% product = Product.find_by_pId(item.product_id)%>  
-        <td class="col-xs-4"><%= product.name %></td>
-        <td class="col-xs-4"><%= item.unit_price %></td>
-        <td class="col-xs-4"><%= item.quantity %></td>
-        <td class="col-xs-4"><%= link_to 'ver', products_path %></td>
-      </tr>
-    <% end %>
-      <tr>
-        <td>Total: <%= current_order.subtotal%></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-  </tbody>
-</table>
-<br>
-<%= link_to "Efectuar pago", purchase_confirm_path, class: "btn btn-danger"%>
-<br><br><br>
-
-<%= link_to "Atras", cart_path%>
+<div class="row">
+  <div class="col-md-9">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @order_items.each do | item | %>
+          <tr>
+            <% product = Product.find_by_pId(item.product_id)%>  
+            <td class="col-xs-3"><%= product.name %></td>
+            <td class="col-xs-3"><%= item.unit_price %></td>
+            <td class="col-xs-3"><%= item.quantity %></td>
+          </tr>
+        <% end %>
+          <tr>
+            <td>Subtotal: <%= current_order.subtotal%></td>
+            <td>Domicilio: <%= dom = current_order.subtotal>8000? 0 : 4000 %></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><strong>Total: <%= dom + current_order.subtotal%></strong></td>
+            <td></td>
+            <td></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <%= link_to "Atras", cart_path, class: "btn btn-default"%>
+  <%= link_to "Efectuar pago", purchase_confirm_path, class: "btn btn-danger"%>
+</div>

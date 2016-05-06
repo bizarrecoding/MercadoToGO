@@ -1,16 +1,18 @@
 class OrderItemsController < ApplicationController
   def create
+    session[:order_id] = nil unless session[:order_id]
     @order = current_order
     @order_item = @order.order_items.new(order_item_params)
     @order.save
     session[:order_id] = @order.id
+    redirect_to products_path
   end
 
   def update
     @order = current_order
     @order_item = @order.order_items.find(params[:id])
     @order_item.update_attributes(order_item_params)
-    @order_items = @order.order_items
+    @order_items = @order
   end
 
   def destroy

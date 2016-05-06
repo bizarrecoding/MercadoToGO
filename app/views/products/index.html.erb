@@ -4,30 +4,34 @@
   <div class="col-md-3">
     <h1 class="lead">Nuestros Productos</h1>
     <div class="list-group">
-        <a href="#" class="list-group-item">Basicos</a>
-        <a href="#" class="list-group-item">Aseo</a>
-        <a href="#" class="list-group-item">Category 3</a>
+        <!--%= link_to "Todos los productos",fetch_products_path(:cat_id => "Todos"), class: "list-group-item" %>
+        < %= link_to "Alimentos",fetch_products_path(:cat_id => "Alimentos"), class: "list-group-item" %>
+        < %= link_to "Aseo",fetch_products_path(:cat_id => "Aseo"), class: "list-group-item" %-->
+        <%= link_to "Todos los productos",products_path, class: "list-group-item" %>
+        <%= link_to "Alimentos", products_path, class: "list-group-item" %>
+        <%= link_to "Aseo", products_path, class: "list-group-item" %>
     </div>
   </div>
   
   <div class="col-md-9">
-    <div class="row">  
-      <% @products.each do |product| %>
+    <div class="row">
+      <%= render partial: 'product_grid', locals: { products: @products} %>
+      <!--% @products.each do |product| %>
       <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
-          <%if product.image.nil? %>
-            <img src="http://placehold.it/320x150" alt="">
-          <%else%>
-            <%= image_tag product.image, width: "260", height: "172", alt: product.name %> 
-          <%end%>
+          < %if product.image.nil? %>
+            <!--img src="http://placehold.it/320x150" alt="">
+          < %else%>
+            < %= image_tag product.image, width: "260", height: "122", alt: product.name %> 
+          < %end%>
           <div class="caption">
-            <h4 class="pull-right">$<%= product.price %> COP</h4>
-            <h4><%= link_to product.name, product %></h4>
-            <p><%= product.description%></p>
+            <h4 class="pull-right">$< %= product.price %> COP</h4>
+            <h4>< %= link_to product.name, product %></h4>
+            <p>< %= product.description%></p>
           </div>
         </div>
       </div>
-      <% end %>
+      < % end %-->
     </div>
   </div>
 </div>

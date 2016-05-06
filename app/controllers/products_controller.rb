@@ -1,5 +1,17 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  
+  #def from_category
+  #  if params[:cat_id] == "Todos" || params[:cat_id].nil? then 
+  #    @selected = Product.all
+  #  else
+  #    @selected = Product.where(:category => params[:cat_id])
+  #  end
+  #  respond_to do |format|
+  #      format.js
+  #  end
+  #end
+  
   # GET /products
   # GET /products.json
   def index

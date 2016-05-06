@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :vendors
   resources :products
   resource :cart, only: [:show, :clear]
   resources :order_items, only: [:create, :update, :destroy]
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   
   get 'purchase/checkout'
   get 'purchase/confirm'
+  
+  #get "/fetch_products" => 'products#from_category', as: 'fetch_products'
   
   devise_for :users, :controllers => { registrations: 'registrations' }
   root to: "landing#home" 
