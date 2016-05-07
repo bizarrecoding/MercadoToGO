@@ -17,4 +17,11 @@
 .link-unstyled:hover, .link-unstyled:focus {
     text-decoration: none;
     text-decoration-style: none;
+    background-color: transparent;
+}
+a img{
+    float: right;
+    position: relative;
+    margin: -13px 0 0 5px ;
+    
 }

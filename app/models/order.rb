@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
     has_many :order_items
+    belongs_to :order_histories
+    
     before_save :update_subtotal
     
     def subtotal
@@ -9,5 +11,9 @@ class Order < ActiveRecord::Base
     private 
     def update_subtotal
         self[:subtotal] = subtotal
+    end
+    
+    def set_order_status
+        #self.order_status = "active"
     end
 end
