@@ -1,0 +1,22 @@
+<h1>Historial de Ordenes</h1>
+<h3><%= current_user.name %> <%= current_user.secname %></h2>
+<table class="table table-striped col-md-8" >
+    <thead>
+        <th>ID</th>
+        <th>Total</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+    </thead>
+    <tbody>
+        <% @orders.each do |order| %>
+            <tr>
+                <td class"col-md-1"><%= order.id %></td>
+                <td class"col-md-1"><%= order.total %></td>
+                <td class"col-md-1"><%= order.status %></td>
+                <td class"col-md-2"><%= order.updated_at %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>    
+
+<%= link_to "Catalogo", products_path, :class => "btn btn-primary opened" %>

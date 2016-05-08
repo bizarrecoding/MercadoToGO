@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <div class="row">
   <div class="col-md-3">
     <h1 class="lead">Nuestros Productos</h1>
@@ -7,15 +8,25 @@
         <!--%= link_to "Todos los productos",fetch_products_path(:cat_id => "Todos"), class: "list-group-item" %>
         < %= link_to "Alimentos",fetch_products_path(:cat_id => "Alimentos"), class: "list-group-item" %>
         < %= link_to "Aseo",fetch_products_path(:cat_id => "Aseo"), class: "list-group-item" %-->
-        <%= link_to "Todos los productos",products_path, class: "list-group-item" %>
-        <%= link_to "Alimentos", products_path, class: "list-group-item" %>
-        <%= link_to "Aseo", products_path, class: "list-group-item" %>
+        
+        <!--%= link_to "Todos los productos",products_path, class: "list-group-item" %>
+        <!--%= link_to "Alimentos", products_path, class: "list-group-item" %>
+        <!--%= link_to "Aseo", products_path, class: "list-group-item" %>-->
+        
+          <a href="" class="list-group-item">Todos los productos</a> <!-- asignar valor al @categ-->
+          <a href="#Alimentos" class="list-group-item">Alimentos</a>
+          <a href="#Aseo" class="list-group-item">Aseo</a>
     </div>
   </div>
+  
+   <% @categ="Aseo"%>
+   <!-- fuck it -->
+
   
   <div class="col-md-9">
     <div class="row">
       <%= render partial: 'product_grid', locals: { products: @products} %>
+
       <!--% @products.each do |product| %>
       <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">

@@ -6,7 +6,7 @@
     </div>
     <div class="col-xs-5">
       
-      <%= form_for order_item, remote: true do |f| %>
+      <%= form_for order_item do |f|  #, remote: true do |f| %>
       <h4 class="text-right">Precio: <span style="color: green"><%= product.price %> COP</span></h4>
         <div class="input-group">
           <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>

@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
   
-  devise_for :vendors
+  get 'profile/show'
+
   resources :products
   resource :cart, only: [:show, :clear]
   resources :order_items, only: [:create, :update, :destroy]
   
   get 'landing/home'
   get 'landing/about'
+  get 'landing/vendor'
   
   get 'purchase/checkout'
   get 'purchase/confirm'
-  get 'cart/clear'
+  
   #get "/fetch_products" => 'products#from_category', as: 'fetch_products'
   
   devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :vendors, :controllers => { registrations: 'vregistrations'}
+  
   root to: "landing#home" 
   
   # The priority is based upon order of creation: first created -> highest priority.

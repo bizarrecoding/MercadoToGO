@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160507002956) do
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
   create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "subtotal"
     t.integer  "iva"
     t.integer  "total"
@@ -45,6 +46,8 @@ ActiveRecord::Schema.define(version: 20160507002956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        null: false

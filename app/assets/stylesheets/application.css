@@ -19,9 +19,68 @@
     text-decoration-style: none;
     background-color: transparent;
 }
-a img{
+a>img{
     float: right;
     position: relative;
     margin: -13px 0 0 5px ;
     
+}
+h3>a:hover{
+    color:#333;
+}
+
+.opened:visited{
+    color: #FFF;
+}
+.dropdown-menu{
+  background-color: #333;
+}
+.dropdown-menu>li>a{
+  background-color: #333;
+  color: white;
+}
+.dropdown-menu>li>a:hover{
+  background-color: #111;
+  color: white;
+}
+.value{
+    position: relative;
+    bottom:0px;
+    right:0px;
+    margin:5px;
+}
+
+nav{
+    background-color:rgb(255,113,70); 
+}
+
+
+body{
+    background-color: rgb(255,208,135);
+}
+html, body {
+    height: 100%;
+}
+
+footer{
+    /*
+    position: absolute;
+    deja el footer pegado abajo, pero tapa cosas en /
+    en /products cuando hallan muchos productos... shit will happend
+    */
+    /*
+    position: relative;
+    queda decente pero no se pega a la parte de abajo, a veces deja una brecha entre el footer y el borde inferior    
+    */
+    
+    bottom: 0px;
+    background-color: rgb(255,255,190);
+    margin: 10px auto 0px auto;
+    padding-top: 15px;
+    height:100px;
+    width: 100%;
+    color: darkgrey;
+}
+footer div{
+    margin: 0 auto;
 }

@@ -7,19 +7,23 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:name, :email) }
+    debugger 
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :secname, :email, :password, :address, :date_of_birth) }
-  end
-  
-  helper_method :current_user_id
-  def current_user_id
-    current_user.id
   end
   
   
   helper_method :current_order
 
   def current_order
-    #session.clear
+    begin
+      if !session[:order_id].nil? && !Order.find(session[:order_id]).nil?
+      end  
+    rescue Exception => e
+      session.clear
+      puts e.message
+      puts e.backtrace.inspect
+    end
+        
     #debugger
     if !session[:order_id].nil? 
       Order.find(session[:order_id])

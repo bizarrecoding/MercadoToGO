@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
     has_many :order_items
-    belongs_to :order_histories
+    belongs_to :user
     
     before_save :update_subtotal
     
