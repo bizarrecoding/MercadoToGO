@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+  <div class="col-md-3">
+    <h1 class="lead">Nuestros Productos</h1>
+    <%= link_to 'Agregar Producto', new_product_path, :class => "btn btn-primary opened", :id => "add"%>
+    
+    <div class="list-group">
+        <a href="/MisProductos" class="list-group-item">Todos los productos</a> 
+        <a href="/MisProductos?category=Alimentos" class="list-group-item">Alimentos</a>
+        <a href="/MisProductos?category=Aseo" class="list-group-item">Aseo</a>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="row">
+      <%= render partial: 'product_grid', locals: { products: @products} %>
+    </div>
+  </div>
+</div>
+<br>
+

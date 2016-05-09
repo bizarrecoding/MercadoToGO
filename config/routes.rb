@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'purchase/checkout'
   get 'purchase/confirm'
   
-  #get "/fetch_products" => 'products#from_category', as: 'fetch_products'
+  get "/MisProductos" =>'products#manage', as: 'my_products'
   
   devise_for :users, :controllers => { registrations: 'registrations' }
   devise_for :vendors, :controllers => { registrations: 'vregistrations'}

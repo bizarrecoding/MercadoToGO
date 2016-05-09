@@ -5,22 +5,21 @@
   <div class="col-md-3">
     <h1 class="lead">Nuestros Productos</h1>
     <div class="list-group">
-        <!--%= link_to "Todos los productos",fetch_products_path(:cat_id => "Todos"), class: "list-group-item" %>
-        < %= link_to "Alimentos",fetch_products_path(:cat_id => "Alimentos"), class: "list-group-item" %>
-        < %= link_to "Aseo",fetch_products_path(:cat_id => "Aseo"), class: "list-group-item" %-->
+        <!--%= link_to "Todos los productos",products_path(@categ => "All"), class: "list-group-item" %>
+        < %= link_to "Alimentos",products_path(@categ => "Alimentos"), class: "list-group-item" %>
+        < %= link_to "Aseo",products_path(@categ => "Aseo"), class: "list-group-item" %-->
         
         <!--%= link_to "Todos los productos",products_path, class: "list-group-item" %>
         <!--%= link_to "Alimentos", products_path, class: "list-group-item" %>
         <!--%= link_to "Aseo", products_path, class: "list-group-item" %>-->
         
-          <a href="" class="list-group-item">Todos los productos</a> <!-- asignar valor al @categ-->
-          <a href="#Alimentos" class="list-group-item">Alimentos</a>
-          <a href="#Aseo" class="list-group-item">Aseo</a>
+          <a href="/products" class="list-group-item">Todos los productos</a> <!-- asignar valor al @categ-->
+          <a href="/products?category=Alimentos" class="list-group-item">Alimentos</a>
+          <a href="/products?category=Aseo" class="list-group-item">Aseo</a>
     </div>
   </div>
   
-   <% @categ="Aseo"%>
-   <!-- fuck it -->
+   <!--% @categ="All"%-->
 
   
   <div class="col-md-9">

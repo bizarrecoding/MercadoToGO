@@ -1,5 +1,5 @@
 <% @products.each do |product| %>
-    <% if @categ==product.category || @categ=="All" %>
+    <!-- % if @categ==product.category || @categ=="Todos" %-->
     <div class="col-sm-4 col-lg-4 col-md-4">
         <div class="thumbnail">
         <!--%if product.image.nil? %-->
@@ -15,5 +15,4 @@
             </div>
         </div>
     </div>
-    <%end%>
 <%end%>

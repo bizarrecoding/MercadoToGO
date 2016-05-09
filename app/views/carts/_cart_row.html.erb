@@ -15,7 +15,9 @@
           </div>
           <div class="col-xs-8 text-right">
             <div class="btn-group">
-              <%= f.submit "Actualizar", class: "btn btn-primary" %>
+              <%= f.submit "Actualizar", class: "btn btn-primary" %> 
+              <!--something around here -->
+              <!-- redirect_to :back -->
               <%= link_to "Eliminar", order_item, { data: { confirm: "¿Esta seguro de que desea eliminar '#{order_item.product.name}' del carrito?" }, method: :delete, remote: true, class: "btn btn-danger" } %>
             </div>
           </div>

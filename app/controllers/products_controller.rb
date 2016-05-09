@@ -1,24 +1,31 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   
-  #def from_category
-  #  if params[:cat_id] == "Todos" || params[:cat_id].nil? then 
-  #    @selected = Product.all
-  #  else
-  #    @selected = Product.where(:category => params[:cat_id])
-  #  end
-  #  respond_to do |format|
-  #      format.js
-  #  end
-  #end
-  
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    #ED WAS HERE
+    @categ = params[:category]  
+    puts "category: (#{@categ})"
+    
+    if @categ.blank? 
+      @products = Product.all
+    else
+      @products = Product.where(:category => @categ).to_a #originalmente Product.all
+    end
     @order_item = current_order.order_items.new
   end
-
+  
+  def manage
+    @products = Product.where(:vendorId => current_vendor.id).to_a 
+    @categ = params[:category]  
+    puts "category: (#{@categ})"
+    
+    unless @categ.blank? 
+      @products = Product.where(:vendorId => current_vendor.id, :category => @categ).to_a
+    end
+  end
+  
   # GET /products/1
   # GET /products/1.json
   def show
@@ -37,7 +44,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product = Product.new(new_product_params)
 
     respond_to do |format|
       if @product.save
@@ -82,6 +89,9 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :id)
+      params.require(:product).permit(:name, :pId, :price, :id, :vendorId, :category)
+    end
+    def new_product_params
+      params.require(:product).permit(:name, :pId, :price, :id, :vendorId, :category)
     end
 end
