@@ -55,7 +55,7 @@ body {
 }
 
 nav{
-    background-color:rgb(255,113,70); 
+  background-color:rgb(255,113,70); 
 }
 
 .cart-link{
@@ -173,7 +173,7 @@ h3>a:hover, .tabs, .tabs:hover{
   border:1px solid #AAAA88;
 }
 .caption{
-  background-color:#EEE;
+  background-color:#FFD;
   border-top: 1px solid #AAA;
 }
 .product_link:hover{
