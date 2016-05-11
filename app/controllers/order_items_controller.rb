@@ -14,9 +14,18 @@ class OrderItemsController < ApplicationController
       puts "copy product quantity after: #{copy.first.quantity}"
       copy.first.save
     end  
+    @product = Product.find_by(:id => order_item_params[:product_id])
     @order.save
+    # respond_to do |format|
+    #  if @order.save
+    #    format.html { redirect_to @product, notice: 'Producto agregado correctamente.'}
+    #    format.json { render :show, status: :created, location: @product }
+    #  else
+    #    format.html { redirect_to @product, notice: "Error en el producto."}
+    #    format.json { render json: @product.errors, status: :unprocessable_entity }
+    #  end
+    #end
     session[:order_id] = @order.id
-    redirect_to products_path
   end
 
   def update

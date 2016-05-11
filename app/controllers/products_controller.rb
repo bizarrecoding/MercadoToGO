@@ -4,25 +4,32 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    #ED WAS HERE
     @categ = params[:category]  
     puts "category: (#{@categ})"
     
     if @categ.blank? 
-      @products = Product.all
+      row = params[:row].to_i
+      if row==0
+        @products = Product.all.limit(12)
+      else
+        min = 1 + 12 * (row - 1) 
+        max = 12 * row
+        @products = Product.where(id: (min..max))
+      end
     else
-      @products = Product.where(:category => @categ).to_a #originalmente Product.all
+      @products = Product.where(:category => @categ).first(12).to_a #originalmente Product.all
     end
     @order_item = current_order.order_items.new
   end
   
   def manage
-    @products = Product.where(:vendorId => current_vendor.id).to_a 
     @categ = params[:category]  
+    puts "current vendor: #{current_vendor.shopname}"
     puts "category: (#{@categ})"
-    
-    unless @categ.blank? 
-      @products = Product.where(:vendorId => current_vendor.id, :category => @categ).to_a
+    if @categ.blank? 
+      @products = Product.where(:vendor_id => current_vendor.id).to_a 
+    else
+      @products = Product.where(:vendor_id => current_vendor.id, :category => @categ).to_a
     end
   end
   
@@ -45,7 +52,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(new_product_params)
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -64,6 +70,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
+        puts "product created"
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -89,9 +96,9 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :pId, :price, :id, :vendorId, :category)
+      params.require(:product).permit(:name, :price, :description, :address, :id, :vendor_id, :category, :row)
     end
     def new_product_params
-      params.require(:product).permit(:name, :pId, :price, :id, :vendorId, :category)
+      params.require(:product).permit(:name, :price, :description, :address, :id, :vendor_id, :category, :row)
     end
 end

@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   
   get "/MisProductos" =>'products#manage', as: 'my_products'
   
-  devise_for :users, :controllers => { registrations: 'registrations' }
-  devise_for :vendors, :controllers => { registrations: 'vregistrations'}
+  devise_for :users, :controllers => { registrations: 'registrations', sessions: 'user/sessions' }
+  devise_for :vendors, :controllers => { registrations: 'vregistrations', sessions: 'vendor/sessions'}
   
   root to: "landing#home" 
   

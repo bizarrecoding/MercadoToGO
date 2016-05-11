@@ -1,51 +1,31 @@
 <p id="notice"><%= notice %></p>
-
-
 <div class="row">
   <div class="col-md-3">
     <h1 class="lead">Nuestros Productos</h1>
     <div class="list-group">
-        <!--%= link_to "Todos los productos",products_path(@categ => "All"), class: "list-group-item" %>
-        < %= link_to "Alimentos",products_path(@categ => "Alimentos"), class: "list-group-item" %>
-        < %= link_to "Aseo",products_path(@categ => "Aseo"), class: "list-group-item" %-->
-        
-        <!--%= link_to "Todos los productos",products_path, class: "list-group-item" %>
-        <!--%= link_to "Alimentos", products_path, class: "list-group-item" %>
-        <!--%= link_to "Aseo", products_path, class: "list-group-item" %>-->
-        
-          <a href="/products" class="list-group-item">Todos los productos</a> <!-- asignar valor al @categ-->
-          <a href="/products?category=Alimentos" class="list-group-item">Alimentos</a>
-          <a href="/products?category=Aseo" class="list-group-item">Aseo</a>
+      <a href="/products" class="list-group-item">Todos los productos</a> <!-- asignar valor al @categ-->
+      <a href="/products?category=Verduras" class="list-group-item">Verduras</a>
+      <a href="/products?category=Frutas" class="list-group-item">Frutas</a>
+      <a href="/products?category=Alimentos" class="list-group-item">Alimentos</a>
+      <a href="/products?category=Aseo" class="list-group-item">Aseo</a>
+      <a href="/products?category=Utencilios" class="list-group-item">Utencilios</a>
+      <a href="/products?category=Bebidas" class="list-group-item">Bebidas</a>
     </div>
   </div>
-  
-   <!--% @categ="All"%-->
-
-  
   <div class="col-md-9">
     <div class="row">
       <%= render partial: 'product_grid', locals: { products: @products} %>
-
-      <!--% @products.each do |product| %>
-      <div class="col-sm-4 col-lg-4 col-md-4">
-        <div class="thumbnail">
-          < %if product.image.nil? %>
-            <!--img src="http://placehold.it/320x150" alt="">
-          < %else%>
-            < %= image_tag product.image, width: "260", height: "122", alt: product.name %> 
-          < %end%>
-          <div class="caption">
-            <h4 class="pull-right">$< %= product.price %> COP</h4>
-            <h4>< %= link_to product.name, product %></h4>
-            <p>< %= product.description%></p>
+    </div>
+    <% sets = 1 + Product.all.count / 12%>
+    <div class="row text-centered">
+      <% if sets > 0 %>
+          <div class="set">
+            <% for l in 1..sets%>
+                <a clas="tabs link-unstyled" href="/products?row=<%= l %>"><%= l %></a> 
+            <% end %>
           </div>
-        </div>
-      </div>
-      < % end %-->
+      <% end %>
     </div>
   </div>
 </div>
-
 <br>
-
-<!--%= link_to 'New Product', new_product_path %-->

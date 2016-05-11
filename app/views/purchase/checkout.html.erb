@@ -1,49 +1,52 @@
-<h1>Resumen de compra</h1>
-
-<h3>Datos del comprador</h3>
-
-<p>Nombre: <%= current_user.name %> <%= current_user.secname %> </p>
-<p>Correo: <%= current_user.email%></p>
-<p>Direccion: <%= current_user.address%></p> 
-<p>Metodo de pago: tarjeta de credito<p>
-<p>Tarjeta #: xxxx-xxxx-xxxx-xxxx</p>
-
-<br>
-<div class="row">
-  <div class="col-md-9">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Producto</th>
-          <th>Precio</th>
-          <th>Cantidad</th>
-        </tr>
-      </thead>
+<div class ="well">
+  <div class="container">
+    <h1>Resumen de compra</h1>
     
-      <tbody>
-        <% @order_items.each do | item | %>
+    <h3>Datos del comprador</h3>
+    
+    <p>Nombre: <%= current_user.name %> <%= current_user.secname %> </p>
+    <p>Correo: <%= current_user.email%></p>
+    <p>Direccion: <%= current_user.address%></p> 
+    <p>Metodo de pago: tarjeta de credito<p>
+    <p>Tarjeta #: xxxx-xxxx-xxxx-xxxx</p>
+  </div>  
+  <br>
+  <div class="container">
+    <div class="col-md-9 panel">
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <% product = Product.find_by_pId(item.product_id)%>  
-            <td class="col-xs-3"><%= product.name %></td>
-            <td class="col-xs-3"><%= item.unit_price %></td>
-            <td class="col-xs-3"><%= item.quantity %></td>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
           </tr>
-        <% end %>
-          <tr>
-            <td>Subtotal: <%= current_order.subtotal%></td>
-            <td>Domicilio: <%= dom = current_order.subtotal>8000? 0 : 4000 %></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><strong>Total: <%= dom + current_order.subtotal%></strong></td>
-            <td></td>
-            <td></td>
-          </tr>
-      </tbody>
-    </table>
+        </thead>
+      
+        <tbody>
+          <% @order_items.each do | item | %>
+            <tr>
+              <% product = Product.find_by_id(item.product_id)%>  
+              <td class="col-xs-3"><%= product.name %></td>
+              <td class="col-xs-3"><%= item.unit_price %></td>
+              <td class="col-xs-3"><%= item.quantity %></td>
+            </tr>
+          <% end %>
+            <tr>
+              <td>Subtotal: <%= current_order.subtotal%></td>
+              <td>Domicilio: <%= dom = current_order.subtotal>8000? 0 : 4000 %></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><strong>Total: <%= dom + current_order.subtotal%></strong></td>
+              <td></td>
+              <td></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <div class="row">
-  <%= link_to "Atras", :back, class: "btn btn-default"%>
-  <%= link_to "Efectuar pago", purchase_confirm_path, class: "btn btn-danger"%>
+  <%= link_to "Atras", :back, class: "btn btn-danger left"%>
+  <%= link_to "Efectuar pago", purchase_confirm_path, class: "btn btn-success right"%>
 </div>

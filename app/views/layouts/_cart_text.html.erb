@@ -1,1 +1,10 @@
-<%= link_to "#{current_order.order_items.size} Articulos(  #{number_to_currency current_order.subtotal} COP )", cart_path, class: "btn btn-link" %>
+<%puts "" %>
+<%puts "" %>
+<%puts "#{current_order.order_items.size}" %>
+<%puts "" %>
+<%puts "" %>
+<% if current_order.order_items.size == 1 %>
+    <%= link_to "#{current_order.order_items.size} Articulo(  #{number_to_currency current_order.subtotal} COP )", cart_path, class: "btn btn-link" %>
+<% else %>    
+    <%= link_to "#{current_order.order_items.size} Articulos(  #{number_to_currency current_order.subtotal} COP )", cart_path, class: "cart-link link-unstyled" %>
+<% end %>

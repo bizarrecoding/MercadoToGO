@@ -1,4 +1,6 @@
 class LandingController < ApplicationController
+  before_action :authenticate_vendor!, only: [:vendor]
+    
   def home
   end
   

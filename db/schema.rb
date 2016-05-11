@@ -13,17 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160507002956) do
 
-  create_table "order_histories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "order_id"
-    t.integer  "oid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "order_histories", ["order_id"], name: "index_order_histories_on_order_id"
-  add_index "order_histories", ["user_id"], name: "index_order_histories_on_user_id"
-
   create_table "order_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "order_id"
@@ -50,10 +39,9 @@ ActiveRecord::Schema.define(version: 20160507002956) do
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "products", force: :cascade do |t|
+    t.integer  "vendor_id"
     t.string   "name",        null: false
-    t.integer  "pId",         null: false
     t.integer  "price",       null: false
-    t.integer  "vendorId",    null: false
     t.text     "description"
     t.string   "category"
     t.string   "subcategory"
@@ -61,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160507002956) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "products", ["vendor_id"], name: "index_products_on_vendor_id"
 
   create_table "purchases", force: :cascade do |t|
     t.string   "user_id"

@@ -1,83 +1,75 @@
-<!-- Page Content -->
+<h2 class="col-md-offset-1">MERCADO TO GO</h2>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="row carousel-holder">
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <%= image_tag "promo1.jpg", class: "slide-image" %>
+                        </div>
+                        <div class="item">
+                            <%= image_tag "promo2.jpg", class: "slide-image" %>
+                        </div>
+                        <div class="item">
+                            <!--img class="slide-image" src="http://placehold.it/800x300" alt=""-->
+                            <%= image_tag "sale.jpg", class: "slide-image" %>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 col-md-12">
+            <p>Si necesitas comprar comida, productos de limpieza, o cualquier otra cosa pequeña para el hogar, puedes acercarte a una tienda de barrio cerca de tu locación, pero si no tienes el tiempo para hacer tu compra tú mismo o no tienes efectivo en mano para acercarte, ¡despreocúpate! en mercadotogo tenemos la solución. </p>
+            <br>  
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <%= image_tag "comprar.jpg", size:"320x150", alt:"Comprar"%>
+                    <div class="caption">
+                        <h3><%= link_to "Compra", products_path, :class => 'link-unstyled' %></h3>
+                    </div>
+                </div>
+            </div>
 
-    <h2 class="col-md-offset-1">MERCADO TO GO</h2>
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="row carousel-holder">
-              <!-- first ROW -->
-                <div class="col-md-12">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <%= image_tag "promo1.jpg", class: "slide-image" %>
-                            </div>
-                            <div class="item">
-                                <%= image_tag "promo2.jpg", class: "slide-image" %>
-                            </div>
-                            <div class="item">
-                                <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                            </div>
-                        </div>
-                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                        </a>
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <%= image_tag "Tienda.jpg", size:"320x150", alt:"Vender"%>
+                    <div class="caption">
+                        <h3><%= link_to "Vende", new_vendor_session_path, :class => 'link-unstyled' %></h3>
                     </div>
                 </div>
             </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <p>Somos una empresdbkasbasfafafafdkajbfkabvkacdbkbaf got bored.... waka waka waka waka waka waka waka waka waka waka waka waka waka waka waka waka waka waka :v </p>
-              </div>
-            </div>
-            <div class="row">
-              <!-- third ROW -->
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <%= image_tag "comprar.jpg", size:"320x150", alt:"Comprar"%>
-                        <div class="caption">
-                            <h3><%= link_to "Compra", products_path, :class => 'link-unstyled' %></h3>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h3><%= link_to "Vende", new_vendor_registration_path, :class => 'link-unstyled' %></h3>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h3>Califica</h3>
-                        </div>
+
+            <div class="col-sm-4 col-lg-4 col-md-4">
+                <div class="thumbnail">
+                    <%= image_tag "Califica.jpg", size:"320x150", alt:"Califica"%>
+                    <div class="caption">
+                        <h3>Califica</h3>
                     </div>
                 </div>
             </div>
-            <!-- Second Row END-->
-    
+        </div>
+        <% unless user_signed_in? || vendor_signed_in?  %>
             <div class="col-sm-12 col-lg-12 col-md-12">
                 <h4>Unete Ahora!</h4>
                 <p>Si te gusta lo que ves, puedes hacerte una cuenta de forma gratis!</p>
                 <%= link_to "Registrarse", new_user_registration_path, :class => 'btn btn-primary opened'%>
             </div>
-    
-        </div>
+        <% end %>
     </div>
 </div>
-<!-- /.container -->
-
-
-

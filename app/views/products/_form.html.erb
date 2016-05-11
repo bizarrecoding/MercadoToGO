@@ -1,3 +1,4 @@
+<br>
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +11,35 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="field">
-    <%= f.label :name, "Nombre del producto"%><br>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :name, "Nombre del producto"%><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :price, "Precio" %><br>
+        <%= f.number_field :price %>
+      </div>
+      <div class="field">
+        <%= f.label :category, "Categoria" %><br>
+        <%= f.text_field :category %>
+      </div>
+      <div class="field">
+        <%= f.label :description, "Descripción" %><br>
+        <%= f.text_field :description %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :price, "Precio" %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :category, "Categoria"%><br>
-    <%= f.text_field :category %>
-  </div>
+  <br>
   <div class="actions">
-    <% f.hidden_field :pId, :value => Product.last.pId + 1%>
-    <% f.hidden_field :vendorId, :value => current_vendor.id  %>
-    <%= f.submit "Crear Producto" , :class => "btn btn-primary opened"%>
+    <%= f.hidden_field :vendor_id, :value => current_vendor.id  %>
+    <%= link_to 'Atras', :back, :class =>"btn btn-danger left"%>
+    <% if @product.persisted?%>
+      <%= f.submit "Actualizar Producto" , :class => "btn btn-primary right"%>
+    <% else %>
+      <%= f.submit "Crear Producto" , :class => "btn btn-primary right"%>
+    <% end %>
   </div>
-  <br><br><br>
+  
 <% end %>

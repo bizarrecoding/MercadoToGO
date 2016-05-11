@@ -4,7 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## application requirement
       t.string  :name,              null:false
       t.string  :secname       
-      t.date    :date_of_birth,     null:false 
+      t.date    :date_of_birth,      
       t.string  :address,           null:false 
       t.boolean :is_vendor,         null:false, default: false
       

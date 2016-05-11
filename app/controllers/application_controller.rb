@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :shopname, :secname, :email, :password, :address, :date_of_birth) }
   end
   
+  def after_sign_in_path_for(resource)
+    puts "resource #{resource}, vendor? #{resource.instance_of? Vendor} "
+    if resource.instance_of? Vendor
+      landing_vendor_path 
+    else
+      root_path
+    end
+  end
   
   helper_method :current_order
 

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -35,6 +36,7 @@
             </div>
         </nav>
     <%else%>
+        <div class="block"></div>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,7 +69,11 @@
                             <li><%= link_to "Registrarse", new_user_registration_path %></li>
                             <li><%= link_to "Iniciar Session", new_user_session_path %></li>
                         <% end %>
-                        <li><%= render 'layouts/cart_text' %></li>
+                        <li>
+                            <div class="cart-text">
+                                <%= render 'layouts/cart_text' %>
+                            <div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -76,12 +82,33 @@
     <div class="container">
         <%= yield %>
     </div>
-    <!-- Footer: ed esta shit va dentro del body-->
+    <br>
     <footer>
-        <div class="col-md-10 col-md-offset-1">
-            <p>Copyright &copy; Bizarre Coding-Mercado to go</p>
-            <p>insert info here</p>
-            <p>1234567890</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xs-4">
+                    <h3 class="subtitle">Menu</h3>
+                    <%= link_to "Pagina principal", root_path%><br>
+                    <%= link_to "Catalogo", products_path %>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <h3 class="subtitle">Compra</h3>
+                    <%= link_to "Iniciar sessión", new_user_session_path %><br>
+                    <%= link_to "Registrarse", new_user_registration_path %>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <h3 class="subtitle">Vende</h3>
+                    <%= link_to "Iniciar sessión", new_vendor_session_path %><br>
+                    <%= link_to "Registrarse", new_vendor_registration_path %>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row text-center">
+                <p class="copyright">Copyright &copy; Bizarre Coding - Mercado to go</p>
+                <!--p>support@bizarrecoding.com</p>
+                <!--p>tel: (123)4567890</p-->
+            </div>
         </div>
     </footer>
 </body>
